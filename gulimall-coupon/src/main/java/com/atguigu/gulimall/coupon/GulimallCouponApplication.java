@@ -20,6 +20,23 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *      @RefreshScope：动态获取并刷新配置
  *      @Value("${配置项的名}")：获取到配置
  *      如果配置中心和当前应用的配置文件中都配置了相同的项，会优先使用配置中心的配置。
+ * 2.细节
+ *  1>命名空间：配置隔离
+ *      默认：public(保留空间)。默认新增的所有配置都在public空间。
+ *      1）开发、测试、生产：利用命名空间来做环境隔离。
+ *          注意：在 bootstrap.properties 文件里配置，需要使用哪个命名空间下的配置。
+ *          spring.cloud.nacos.config.namespace=35d03cf3-3698-4597-893f-d87ed5c6ef1c
+ *      2）每一个微服务之间互相隔离配置，每一个微服务都创建自己的命名空间，只加载自己命名空间下的所有配置。
+ *  2>配置集
+ *      一组相关或不相关的配置项的集合称为配置集。
+ *      在系统中，一个配置文件通常就是一个配置集。
+ *  3>配置集id
+ *      Data ID，类似文件名。
+ *  4>配置分组
+ *      默认所有的配置集都属于：DEFAULT_GROUP
+ *      618，1111，1212
+ *
+ *  每个微服务创建自己的命名空间，使用配置分组来区分不同的环境（dev,test,prod）。
  */
 @EnableDiscoveryClient
 @SpringBootApplication
