@@ -37,6 +37,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *      618，1111，1212
  *
  *  每个微服务创建自己的命名空间，使用配置分组来区分不同的环境（dev,test,prod）。
+ *
+ * 3.同事加载多个配置集
+ *  1>微服务任何配置信息，任何配置文件都可以放在配置中心
+ *  2>只需要在 bootstrap.properties 说明加载配置中心中哪些配置文件即可
+ *  3>@Value,@ConfigurationProperties ... 以前SpringBoot任何从配置文件中取值的方法，都能使用。
+ *  优先使用配置中心的配置。
  */
 @EnableDiscoveryClient
 @SpringBootApplication
