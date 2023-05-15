@@ -20,6 +20,19 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *   b.配置MyBatis-Plus
  *      1>@MapperScan
  *      2>告诉MyBatis-Plus，sql映射文件位置
+ *
+ * 2、逻辑删除
+ *  1）配置全局的逻辑删除规则（省略）
+ *  mybatis-plus:
+ *   global-config:
+ *     db-config:
+ *       logic-delete-field: flag # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+ *       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+ *       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+ *  2）配置逻辑删除的组件Bean（省略）
+ *  3）给Bean加上逻辑删除注解
+ *      @TableLogic
+ *      private Integer deleted;
  */
 @EnableDiscoveryClient
 @MapperScan("com.atguigu.gulimall.product.dao")
